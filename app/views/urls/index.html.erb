@@ -14,7 +14,7 @@
   <tbody>
     <% @urls.each do |url| %>
       <tr>
-        <td><%= link_to url.url, url_path(url) %></td>
+        <td><%= link_to url.url, url.url %></td>
         <td><%= link_to url.short_url, url.short_url %></td>
         <td><%=l url.created_at %></td>
         <td>
