@@ -25,5 +25,10 @@ class UrlsController < ApplicationController
     redirect_to urls_path
   end
 
+  # This is called to do the actual redirection
+  def redirect
+    @url = Url.where(:short_url => params[:short_url]).first
+    redirect_to @url.url
+  end
 
 end

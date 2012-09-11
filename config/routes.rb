@@ -3,4 +3,6 @@ UrlRedir::Application.routes.draw do
 
   root :to => "urls#index"
 
+  match ':short_url' => 'urls#redirect'
+
 end
