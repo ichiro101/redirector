@@ -1,17 +1,29 @@
 class UrlsController < ApplicationController
 
+  # for simplicity we are going to have view page and
+  # the form to create a new shortened url on the same action
   def index
-    @url = Url.all
-  end
+    @urls = Url.all
 
-  def new
     @url = Url.new
   end
 
   def create
-    @url = Url.new
+    @url = Url.new(params[:url])
 
-    @url.url = params[:url]
+    if @url.save
+      redirect_to urls_path
+    else
+      render :index
+    end
   end
+
+  def destroy
+    @url = Url.find(params[:id])
+    @url.destroy
+
+    redirect_to urls_path
+  end
+
 
 end
